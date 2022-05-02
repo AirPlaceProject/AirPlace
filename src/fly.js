@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 const StyledPaper = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -16,6 +17,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AutoGridNoWrap() {
+    let navigate = useNavigate()
     const [myFlights, setMyFlights] = useState([
         {
             codeFlight: 1,
@@ -47,7 +49,7 @@ export default function AutoGridNoWrap() {
            <Grid container wrap="nowrap" spacing={2}>
                    <>
                      <Grid item>
-                     <Button variant="outlined">לשיבוץ מקום בטיסה</Button>
+                     <Button variant="outlined" onClick={()=>navigate("/formConstrain")}>לשיבוץ מקום בטיסה</Button>
                  </Grid>
                  <Grid item xs>
                     <Typography>{item.codeFlight} קוד טיסה</Typography>

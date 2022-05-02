@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import Slider from '@mui/material/Slider';
+import Button from '@mui/material/Button';
 const StyledPaper = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -21,7 +22,7 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
     width: '50vw'
 }));
 
-export default function AutoGridNoWrap() {
+export default function FormConstrain() {
     const [RS, setRs] = useState(30)
     const [LS, setLS] = useState(30)
     const [W, setW] = useState(30)
@@ -34,12 +35,16 @@ export default function AutoGridNoWrap() {
         else
             setErr(false)
     }, [L, LS, W, RS, A]);
+    const continueButton = () => {
+        console.log(MyConstrain)
+    }
     const [MyConstrain, setMyConstrain] = useState({
         "RS": 0,
         "LS": 0,
         "W": 0,
         "L": 0,
         "A": 0,
+        "H": false,
         "pay": false,
         "cabin": "Economy"
     })
@@ -86,9 +91,9 @@ export default function AutoGridNoWrap() {
                                             color: '#1976d2',
 
                                         }} id="demo-radio-buttons-group-label">מחלקה</FormLabel>
-                                        <FormControlLabel value="first" control={<Radio />} label="מחלקה ראשונה" onChange={changeState} />
-                                        <FormControlLabel value="business" control={<Radio />} label="מחלקת עסקים" onChange={changeState} />
-                                        <FormControlLabel value="Economy" control={<Radio />} label="מחלקת תירים" onChange={changeState} />
+                                        <FormControlLabel value="first" name="cabin" control={<Radio />} label="מחלקה ראשונה" onChange={changeState} />
+                                        <FormControlLabel value="business" name="cabin" control={<Radio />} label="מחלקת עסקים" onChange={changeState} />
+                                        <FormControlLabel value="Economy" name="cabin" control={<Radio />} label="מחלקת תירים" onChange={changeState} />
                                     </RadioGroup>
                                 </FormControl>
                             </Grid>
@@ -100,20 +105,44 @@ export default function AutoGridNoWrap() {
                                 <FormLabel sx={{
                                     fontSize: '20px',
                                     color: '#1976d2',
-                                }} id="demo-row-radio-buttons-group-label">תשלם עבור מושב יותר טוב?</FormLabel>
+                                }} id="demo-row-radio-buttons-group-label">?תשלם עבור מושב יותר טוב</FormLabel>
                                 <RadioGroup
                                     sx={{
                                         fontSize: '20px',
                                         color: '#1976d2',
                                         marginLeft: "4vw",
                                     }}
+                                    defaultValue="true"
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    <FormControlLabel value="true" name="pay" control={<Radio />} label="כן" onChange={changeState} />
+                                    <FormControlLabel value="false" name="pay" control={<Radio />} label="לא" onChange={changeState} />
+                                </RadioGroup>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
+                    <Grid container wrap="nowrap" spacing={2}>
+                        <Grid item xs>
+                            <FormControl>
+                                <FormLabel sx={{
+                                    fontSize: '20px',
+                                    color: '#1976d2',
+                                }} id="demo-row-radio-buttons-group-label">?מושב מותאם נכה</FormLabel>
+                                <RadioGroup
+                                    sx={{
+                                        fontSize: '20px',
+                                        color: '#1976d2',
+                                        marginLeft: "2vw",
+                                    }}
                                     defaultValue="false"
                                     row
                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                     name="row-radio-buttons-group"
                                 >
-                                    <FormControlLabel value="true" control={<Radio />} label="כן" onChange={changeState} />
-                                    <FormControlLabel value="false" control={<Radio />} label="לא" onChange={changeState} />
+                                    <FormControlLabel value="true" name="pay" control={<Radio />} label="כן" onChange={changeState} />
+                                    <FormControlLabel value="false" name="pay" control={<Radio />} label="לא" onChange={changeState} />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
@@ -130,7 +159,7 @@ export default function AutoGridNoWrap() {
                                 <Slider
                                     name="RS"
                                     aria-label="Temperature"
-                                    defaultValue={30}
+                                    defaultValue={0}
                                     valueLabelDisplay="auto"
                                     step={10}
                                     marks
@@ -155,7 +184,7 @@ export default function AutoGridNoWrap() {
                                 <Slider
                                     name="LS"
                                     aria-label="Temperature"
-                                    defaultValue={30}
+                                    defaultValue={0}
                                     valueLabelDisplay="auto"
                                     step={10}
                                     marks
@@ -179,7 +208,7 @@ export default function AutoGridNoWrap() {
                                 <Slider
                                     name="W"
                                     aria-label="Temperature"
-                                    defaultValue={30}
+                                    defaultValue={0}
                                     valueLabelDisplay="auto"
                                     step={10}
                                     marks
@@ -203,7 +232,7 @@ export default function AutoGridNoWrap() {
                                 <Slider
                                     name="A"
                                     aria-label="Temperature"
-                                    defaultValue={30}
+                                    defaultValue={0}
                                     valueLabelDisplay="auto"
                                     step={10}
                                     marks
@@ -228,7 +257,7 @@ export default function AutoGridNoWrap() {
                                 <Slider
                                     name="L"
                                     aria-label="Temperature"
-                                    defaultValue={30}
+                                    defaultValue={0}
                                     valueLabelDisplay="auto"
                                     step={10}
                                     marks
@@ -245,9 +274,17 @@ export default function AutoGridNoWrap() {
                                     }}
                                 />
                             </Box>
-                            {err && <div style={{ color: "red" }}>אין אפשרות לדרג באותו ניקוד יותר מאילוץ אחד!</div>}
+                            {err && <div style={{ color: "red", margin: "15px" }}>אין אפשרות לדרג באותו ניקוד יותר מאילוץ אחד!</div>}
                         </Grid>
                     </Grid>
+
+                    <Grid container wrap="nowrap" spacing={2}>
+
+                        <Grid item xs>
+                            <Button variant="outlined" onClick={continueButton}>המשך</Button>
+                        </Grid>
+                    </Grid>
+
                 </StyledPaper>
             </Box>
         </>
