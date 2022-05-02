@@ -15,9 +15,9 @@ export default function CircularIntegration() {
 const [load, setLoud]=React.useState(false)
   const buttonSx = {
     ...(success && {
-      bgcolor: green[500],
+      bgcolor: "#069A8E",
       '&:hover': {
-        bgcolor: green[700],
+        bgcolor:"#069A8E",
       },
     }),
   };
@@ -59,7 +59,7 @@ const [load, setLoud]=React.useState(false)
           <CircularProgress
             size={68}
             sx={{
-              color: green[500],
+              color: "#069A8E",
               position: 'absolute',
               top: -6,
               left: -6,
