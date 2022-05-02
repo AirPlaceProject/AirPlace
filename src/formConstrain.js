@@ -11,15 +11,15 @@ import Radio from '@mui/material/Radio';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 const StyledPaper = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    maxWidth: 1000,
-    color: theme.palette.text.primary,
-    border: '2px solid lightGrey',
-    borderRadius: '1vw',
-    margin: 'auto',
-    width: '50vw'
+    // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    // ...theme.typography.body2,
+    // padding: theme.spacing(2),
+    // maxWidth: 1000,
+    // color: theme.palette.text.primary,
+    // // border: '2px solid lightGrey',
+    // // borderRadius: '1vw',
+    // margin: 'auto',
+    // width: '50vw'
 }));
 
 export default function FormConstrain() {
@@ -67,13 +67,13 @@ export default function FormConstrain() {
     return (
         <>
             <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
-                <StyledPaper
+                {/* <StyledPaper
                     sx={{
                         my: 1,
                         mx: 'auto',
                         p: 2,
                     }}
-                >
+                > */}
                     <Grid container wrap="nowrap" spacing={2}>
                         <>
                             <Grid item>
@@ -285,7 +285,7 @@ export default function FormConstrain() {
                         </Grid>
                     </Grid>
 
-                </StyledPaper>
+                {/* </StyledPaper> */}
             </Box>
         </>
     );

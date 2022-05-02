@@ -7,6 +7,8 @@ import FormConstrain from './formConstrain';
 import AutoGridNoWrap from './fly'
 import { Route, Routes } from "react-router-dom";
 import Form2 from './form2';
+import VerticalLinearStepper from './stepper';
+
 function App() {
   return (
     <>
@@ -15,7 +17,6 @@ function App() {
       <Route path="formConstrain" element={<FormConstrain/>} /> 
       <Route path="" element={<AutoGridNoWrap/>} />
     </Routes>
-
       </div>
     </>
   );
