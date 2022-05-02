@@ -10,9 +10,6 @@ import Form2 from './form2';
 function App() {
   return (
   <>
-  <div className="App">
-    
-    </div>
   </>
   );
 }
