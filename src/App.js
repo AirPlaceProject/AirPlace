@@ -11,10 +11,7 @@ function App() {
   return (
   <>
   <div className="App">
-     <Routes>
-      <Route path="formConstrain" element={<FormConstrain/>} /> 
-      <Route path="" element={<AutoGridNoWrap/>} />
-    </Routes>
+    
     </div>
   </>
   );
