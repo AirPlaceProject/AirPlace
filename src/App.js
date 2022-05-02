@@ -7,9 +7,11 @@ import FormConstrain from './formConstrain';
 import AutoGridNoWrap from './fly'
 import { Route, Routes } from "react-router-dom";
 import Form2 from './form2';
+import SignUp from './signUp';
 function App() {
   return (
     <>
+
       <div className="App">
       <Routes>
       <Route path="formConstrain" element={<FormConstrain/>} /> 
