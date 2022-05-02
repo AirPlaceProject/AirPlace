@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
-import CustomPaginationActionsTable from './tablePlacement'
+import BasicTable from './tablePlacement'
+
 export default function CircularIntegration() {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -14,9 +15,9 @@ export default function CircularIntegration() {
 const [load, setLoud]=React.useState(false)
   const buttonSx = {
     ...(success && {
-      bgcolor: green[500],
+      bgcolor: "#069A8E",
       '&:hover': {
-        bgcolor: green[700],
+        bgcolor:"#069A8E",
       },
     }),
   };
@@ -43,7 +44,7 @@ const [load, setLoud]=React.useState(false)
 
   return (
       <>
-  {load&&< CustomPaginationActionsTable/>}
+  {load&&< BasicTable/>}
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ m: 1, position: 'relative' }}>
         <Fab
@@ -58,7 +59,7 @@ const [load, setLoud]=React.useState(false)
           <CircularProgress
             size={68}
             sx={{
-              color: green[500],
+              color: "#069A8E",
               position: 'absolute',
               top: -6,
               left: -6,
