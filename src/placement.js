@@ -45,7 +45,7 @@ const [load, setLoud]=React.useState(false)
   return (
       <>
   {load&&< BasicTable/>}
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+    <Box sx={{  display: 'flex', alignItems: 'center' }}>
       <Box sx={{ m: 1, position: 'relative' }}>
         <Fab
           aria-label="save"
@@ -74,9 +74,10 @@ const [load, setLoud]=React.useState(false)
           sx={buttonSx}
           disabled={loading}
           onClick={handleButtonClick}
+          style={{bgcolor:"#069A8E",}}
         >
           Accept terms
-        </Button>
+        </Button >
         {loading && (
           <CircularProgress
             size={24}
