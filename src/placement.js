@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
-import CustomPaginationActionsTable from './tablePlacement'
+import BasicTable from './tablePlacement'
+
 export default function CircularIntegration() {
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -43,7 +44,7 @@ const [load, setLoud]=React.useState(false)
 
   return (
       <>
-  {load&&< CustomPaginationActionsTable/>}
+  {load&&< BasicTable/>}
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Box sx={{ m: 1, position: 'relative' }}>
         <Fab
