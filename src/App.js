@@ -1,17 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import PassengerCard from './PassengerCard'
-import SignIn from './login'
+import LogIn from './login'
 import CircularIntegration from './placement'
 import AutoGridNoWrap from './formConstrain'
+
 function App() {
   return (
-  <>
- <PassengerCard/>
-<CircularIntegration/>
-<SignIn/>
-<AutoGridNoWrap/>
-  </>
+    <>
+
+      < LogIn/>
+      <PassengerCard />
+      <CircularIntegration />
+      <AutoGridNoWrap />
+    </>
   );
 }
 
