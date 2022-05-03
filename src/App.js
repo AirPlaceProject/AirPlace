@@ -8,6 +8,7 @@ import AutoGridNoWrap from './fly'
 import { Route, Routes } from "react-router-dom";
 import Form2 from './form2';
 import SignUp from './signUp';
+import BasicTable from './tablePlacement';
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
       <Route path="formConstrain" element={<FormConstrain/>} /> 
       <Route path="" element={<AutoGridNoWrap/>} />
     </Routes>
+  
 
       </div>
     </>
