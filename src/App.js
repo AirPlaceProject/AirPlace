@@ -18,7 +18,7 @@ function App() {
       <Route path="formConstrain" element={<FormConstrain/>} /> 
       <Route path="" element={<AutoGridNoWrap/>} />
     </Routes>
-    <BasicTable/>
+  
 
       </div>
     </>
