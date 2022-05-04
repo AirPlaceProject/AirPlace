@@ -55,6 +55,7 @@ export default function SignIn(props) {
     localStorage.setItem("currentUser",JSON.stringify(values));
  //  let u=   localStorage.getItem("currentUser")
    props.setIsUser(true)
+   
       swal({
         title: "התחברת בהצלחה",
         icon: "success",
@@ -138,7 +139,7 @@ export default function SignIn(props) {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+       
       </Container>
     </ThemeProvider>
   );
