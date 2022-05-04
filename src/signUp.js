@@ -37,11 +37,11 @@ export default function SignUp() {
         },
         validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values))
+            
 
             swal({
                 title: values.firstName+" אנו שמחים שהתחברת בהצלחה",
-                icon: "'success'",
+                icon: "success",
                 button: "Aww yiss!",
               });
         },
