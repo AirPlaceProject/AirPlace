@@ -14,7 +14,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send'
 import { styled } from '@mui/material/styles';
 
-export default function ImgMediaCard() {
+export default function Cards() {
   const [Passenger, setPassenger] = useState(
     [{ name: "נעמה פרנק", phone: "0556772275", want: "אני רוצה שקט לאורך כל הטיסה", constrain: ["ימין", "חלון", "רווח"] },
     { name: "ציפי ורנר", phone: "0556772278", want: "אני מעוניין לשבת רק ליד גבר", constrain: ["שמאל", "עסקים"] },

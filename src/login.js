@@ -20,6 +20,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup"
 
 
+
 const validationSchema = Yup.object({
   email: Yup.string().email('נא התאם לתבנית אימייל').required('אימייל זהו שדה חובה'),
   password: Yup.string().required('סיסמא זהו שדה חובה'),
@@ -40,8 +41,8 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
-
+export default function SignIn(props) {
+  let navigate = useNavigate()
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched, dirty, isValid } = useFormik({
     initialValues: {
@@ -49,11 +50,11 @@ export default function SignIn() {
       password: '',
     },
     validationSchema,
-    onSubmit: (values) => {
-   
-
-
-      
+    onSubmit: (values) => { 
+  
+    localStorage.setItem("currentUser",JSON.stringify(values));
+ //  let u=   localStorage.getItem("currentUser")
+   props.setIsUser(true)
       swal({
         title: "התחברת בהצלחה",
         icon: "success",
@@ -129,13 +130,8 @@ export default function SignIn() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link onClick={()=>navigate("../signUp")} style={{cursor:"pointer"}} >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

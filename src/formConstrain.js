@@ -10,6 +10,7 @@ import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 const StyledPaper = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -23,11 +24,11 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export default function FormConstrain() {
-    const [RS, setRs] = useState(30)
-    const [LS, setLS] = useState(30)
-    const [W, setW] = useState(30)
-    const [L, setL] = useState(30)
-    const [A, setA] = useState(30)
+    const [RS, setRs] = useState(0)
+    const [LS, setLS] = useState(0)
+    const [W, setW] = useState(0)
+    const [L, setL] = useState(0)
+    const [A, setA] = useState(0)
     useEffect(() => {
         //if (((A == L ||A == RS || A == LS || A == W)&&A!=0 || (L == W || L == RS || L == LS )&&L!=0|| (RS == LS || RS == W )&&RS!=0|| LS == W)&&W!=0)
         if ((((A == L || A == RS || A == LS || A == W) && A != 0) || ((L == W || L == RS || L == LS) && L != 0) || ((RS == LS || RS == W) && RS != 0) || (LS == W) && W != 0))
@@ -37,6 +38,7 @@ export default function FormConstrain() {
     }, [L, LS, W, RS, A]);
     const continueButton = () => {
         console.log(MyConstrain)
+        //navigate("signUp");
     }
     const [MyConstrain, setMyConstrain] = useState({
         "RS": 0,
@@ -49,6 +51,7 @@ export default function FormConstrain() {
         "cabin": "Economy"
     })
     const [err, setErr] = useState(false)
+    let navigate = useNavigate()
     const changeState = (e, newValue) => {
         setMyConstrain({
             ...MyConstrain,
@@ -277,11 +280,11 @@ export default function FormConstrain() {
                             {err && <div style={{ color: "red", margin: "15px" }}>אין אפשרות לדרג באותו ניקוד יותר מאילוץ אחד!</div>}
                         </Grid>
                     </Grid>
-
+ 
                     <Grid container wrap="nowrap" spacing={2}>
 
                         <Grid item xs>
-                            <Button variant="outlined" onClick={continueButton}>המשך</Button>
+                            <Button variant="outlined"   disabled={err}onClick={continueButton}>המשך</Button>
                         </Grid>
                     </Grid>
 
