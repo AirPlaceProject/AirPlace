@@ -50,10 +50,6 @@ export default function SignIn() {
     },
     validationSchema,
     onSubmit: (values) => {
-   
-
-
-      
       swal({
         title: "התחברת בהצלחה",
         icon: "success",
@@ -142,7 +138,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+       
       </Container>
     </ThemeProvider>
   );

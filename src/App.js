@@ -12,7 +12,8 @@ import BasicTable from './tablePlacement';
 function App() {
   return (
     <>
-
+    <SignIn/>
+<SignUp/>
       <div className="App">
       <Routes>
       <Route path="formConstrain" element={<FormConstrain/>} /> 
