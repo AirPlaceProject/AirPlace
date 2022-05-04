@@ -15,19 +15,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useFormik } from "formik";
 import * as Yup from "yup"
 import { Alert } from "@mui/material";
+import Swal from "sweetalert2";
+import swal from 'sweetalert';
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 const validationSchema = Yup.object({
     firstName: Yup.string().required('שדה חובה'),
     lastName: Yup.string().required('שדה חובה'),
@@ -49,6 +39,11 @@ export default function SignUp() {
         onSubmit: (values) => {
             alert(JSON.stringify(values))
 
+            swal({
+                title: values.firstName+" אנו שמחים שהתחברת בהצלחה",
+                icon: "'success'",
+                button: "Aww yiss!",
+              });
         },
     })
     return (
@@ -113,7 +108,7 @@ export default function SignUp() {
                                     required
                                     fullWidth
                                     id="email"
-                                    label="First Name"
+                                    label="email"
                                     name="email"
                                     autoComplete="family-name"
                                     error={errors.email && touched.email}
@@ -155,6 +150,7 @@ export default function SignUp() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            disabled={!dirty || !isValid}
                         >
                             Sign Up
                         </Button>
@@ -167,7 +163,7 @@ export default function SignUp() {
                         </Grid>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 5 }} />
+             
             </Container>
         </ThemeProvider>
     );
