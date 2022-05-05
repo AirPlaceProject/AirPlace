@@ -18,10 +18,16 @@ import { Alert } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import swal from 'sweetalert';
-
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+const Input = styled('input')({
+    display: 'none',
+});
 function Copyright(props) {
 
-   
+
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
@@ -48,20 +54,20 @@ export default function SignUp() {
     let navigate = useNavigate()
     const { handleSubmit, handleChange, handleBlur, values, errors, touched, dirty, isValid } = useFormik({
         initialValues: {
-            firstName:'',
+            firstName: '',
             lastName: '',
             password: '',
-            email:''
+            email: ''
         },
         validationSchema,
         onSubmit: (values) => {
-            
+
 
             swal({
-                title: values.firstName+" אנו שמחים שהתחברת בהצלחה",
+                title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
                 icon: "success",
                 button: "Aww yiss!",
-              });
+            });
         },
     })
     return (
@@ -133,7 +139,7 @@ export default function SignUp() {
                                     onBlur={handleBlur}
                                     value={values.email}
                                 />
-                                {errors.email && touched.email &&<Alert variant="outlined" style={{ borderColor: "white" }} severity="error">
+                                {errors.email && touched.email && <Alert variant="outlined" style={{ borderColor: "white" }} severity="error">
                                     {errors.email}
                                 </Alert>}
                             </Grid>
@@ -145,7 +151,7 @@ export default function SignUp() {
                                     label="Password"
                                     type="password"
                                     id="password"
-                                  
+
                                     error={errors.password && touched.password}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -156,11 +162,16 @@ export default function SignUp() {
                                 </Alert>}
                             </Grid>
                             <Grid item xs={12}>
-                                <FormControlLabel
+                                {/* <FormControlLabel
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}
                                     label="I want to receive inspiration, marketing promotions and updates via email."
-                                />
+                                /> */}
+                                <Input accept="image/*" id="icon-button-file" type="file" />
+                                <IconButton color="primary" aria-label="upload picture" component="span">
+                                    <PhotoCamera />
+                                </IconButton>
                             </Grid>
+
                         </Grid>
                         <Button
                             type="submit"
@@ -173,14 +184,14 @@ export default function SignUp() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link  onClick={()=>navigate("../signIn")} style={{cursor:"pointer"}}>
+                                <Link onClick={() => navigate("../signIn")} style={{ cursor: "pointer" }}>
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
-             
+
             </Container>
         </ThemeProvider>
     );

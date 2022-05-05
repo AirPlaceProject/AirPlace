@@ -11,6 +11,21 @@ import Radio from '@mui/material/Radio';
 import Slider from '@mui/material/Slider';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { Outlet, Link } from "react-router-dom";
+import swal from 'sweetalert';
+
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+
+const Input = styled('input')({
+    display: 'none',
+});
 const StyledPaper = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -24,22 +39,22 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 }));
 
 export default function FormConstrain() {
+
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [open, setOpen] = useState(false);
+    const [err, setErr] = useState(false)
     const [RS, setRs] = useState(0)
     const [LS, setLS] = useState(0)
     const [W, setW] = useState(0)
     const [L, setL] = useState(0)
     const [A, setA] = useState(0)
-    useEffect(() => {
-        //if (((A == L ||A == RS || A == LS || A == W)&&A!=0 || (L == W || L == RS || L == LS )&&L!=0|| (RS == LS || RS == W )&&RS!=0|| LS == W)&&W!=0)
-        if ((((A == L || A == RS || A == LS || A == W) && A != 0) || ((L == W || L == RS || L == LS) && L != 0) || ((RS == LS || RS == W) && RS != 0) || (LS == W) && W != 0))
-            setErr(true)
-        else
-            setErr(false)
-    }, [L, LS, W, RS, A]);
-    const continueButton = () => {
-        console.log(MyConstrain)
-        //navigate("signUp");
-    }
+    let navigate = useNavigate()
+    const [cardDet, setCardDet] = useState({
+        phone: "",
+        textP: "",
+        pathPecture: ""
+
+    });
     const [MyConstrain, setMyConstrain] = useState({
         "RS": 0,
         "LS": 0,
@@ -50,9 +65,35 @@ export default function FormConstrain() {
         "pay": false,
         "cabin": "Economy"
     })
-    const [err, setErr] = useState(false)
-    let navigate = useNavigate()
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+   
+    useEffect(() => {
+        //if (((A == L ||A == RS || A == LS || A == W)&&A!=0 || (L == W || L == RS || L == LS )&&L!=0|| (RS == LS || RS == W )&&RS!=0|| LS == W)&&W!=0)
+        if ((((A == L || A == RS || A == LS || A == W) && A != 0) || ((L == W || L == RS || L == LS) && L != 0) || ((RS == LS || RS == W) && RS != 0) || (LS == W) && W != 0))
+            setErr(true)
+        else
+            setErr(false)
+    }, [L, LS, W, RS, A]);
+    const continueToCard = () => {
+        console.log(cardDet)
+        navigate("../cards")
+    }
+    const continueButton = () => {
+        swal({
+            title:  "השיבוץ אושר בהצלחה",
+            text: "הודעה סופית על המושב המותאם לך תקבל לפני הטיסה",
+            icon: "success",
+            button: "OK",
+        });
+    }
     const changeState = (e, newValue) => {
+
         setMyConstrain({
             ...MyConstrain,
             [e.target.name]: e.target.value
@@ -66,6 +107,21 @@ export default function FormConstrain() {
             setErr(true)
         else
             setErr(false)
+    }
+    const form2Input = (event) => {
+        if (event.target.name != "pathPecture") {
+            setCardDet({
+                ...cardDet,
+                [event.target.name]: event.target.value
+            })
+        }
+    }
+    const form2ImgInput = (ev) => {
+        setCardDet({
+            ...cardDet,
+            pathPecture: ev
+
+        })
     }
     return (
         <>
@@ -280,16 +336,74 @@ export default function FormConstrain() {
                             {err && <div style={{ color: "red", margin: "15px" }}>אין אפשרות לדרג באותו ניקוד יותר מאילוץ אחד!</div>}
                         </Grid>
                     </Grid>
- 
+
                     <Grid container wrap="nowrap" spacing={2}>
 
                         <Grid item xs>
-                            <Button variant="outlined"   disabled={err}onClick={continueButton}>המשך</Button>
+                            <Button variant="outlined" disabled={err} onClick={continueButton}>לאישור שיבוץ</Button>
+                        </Grid>
+                        <Grid item xs>
+                            <Button variant="outlined" onClick={handleClickOpen}>
+                                לבחירת חבר חדש לישיבה בטיסה
+                            </Button>
+                            {/* <Button variant="outlined" onClick={()=>setOpen(true),()=>navigate(`form2/${open}`)}>
+                              לבחירת חבר חדש לישיבה בטיסה
+                            </Button> */}
                         </Grid>
                     </Grid>
 
                 </StyledPaper>
             </Box>
+            <Outlet />
+
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Subscribe</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        שתף בכמה מילים על עצמך והוסף תמונה  על מנת לימצוא את החבר טיסה המתאים במיחוד לך
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="tell about yourself..."
+                        type="text"
+                        fullWidth
+                        name="textP"
+                        variant="standard"
+                        onChange={form2Input}
+                    />
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="your phone number"
+                        type="text"
+                        fullWidth
+                        variant="standard"
+                        onChange={form2Input}
+                        name="phone"
+                    />
+                    <label htmlFor="icon-button-file">
+                        upload image
+                        <Input name="pathPecture" accept="image/*" id="icon-button-file" type="file" onChange={(event) => {
+                            console.log(event.target.files[0]);
+                            setSelectedImage(event.target.files[0]);
+                            console.log(selectedImage);
+                            form2ImgInput(event.target.files[0])
+                        }} />
+                        <IconButton color="primary" aria-label="upload picture" component="span" >
+                            <PhotoCamera />
+                        </IconButton>
+                    </label>
+                    {selectedImage &&
+                        <img alt="not fount" width={"250px"} src={URL.createObjectURL(selectedImage)} />}
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={continueToCard} >Subscribe</Button>
+                </DialogActions>i
+            </Dialog>
         </>
     );
 }
