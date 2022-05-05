@@ -14,33 +14,18 @@ import Cards from './PassengerCard';
 import { useState } from 'react';
 //import UploadButtons from ''
 function App() {
-  const[isUser,setIsUser]=useState()
   return (
     <>
-      {/* <ResponsiveAppBar />
-      <AutoGridNoWrap/> */}
       <div className="App">
-      <ResponsiveAppBar isUser={isUser}/>
+      <ResponsiveAppBar />
       <Routes>
       <Route path="formConstrain" element={<FormConstrain/>} />   
-      <Route path="" element={<SignIn setIsUser={setIsUser}/>} />
+      <Route path="" element={<SignIn />} />
       <Route path="myFlights" element={<AutoGridNoWrap/>} />
       <Route path="signUp" element={<SignUp />} />
-      <Route path="signIn" element={<SignIn setIsUser={setIsUser}/>} />
+      <Route path="signIn" element={<SignIn />} />
       <Route path="cards" element={<Cards/>} />
-   
-    
-
-      
     </Routes>
-    {/* <UploadButtonn/> */}
-        {/* <Routes>
-          <Route path="formConstrain" element={<FormConstrain />} />
-          <Route path="" element={<FormConstrain />} />
-          <Route path="signUp" element={<SignUp />} />
-          <Route path="signUp/signIn" element={<SignIn />} />
-          <Route path="/signIn" element={<SignUp />} />
-        </Routes> */}
       </div>
     </>
   );

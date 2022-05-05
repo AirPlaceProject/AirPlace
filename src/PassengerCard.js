@@ -70,18 +70,13 @@ export default function Cards() {
                   {item.want}
                 </CardContent>
                 <CardContent >
-
-
                   {item.phone}
-
                 </CardContent>
                 <CardContent style={{ textAlign: "center" }}>
                   <Button style={{ textAlign: "center", backgroundColor: '#069A8E' }} variant="contained" endIcon={<SendIcon />}>
                     Send mail
                   </Button>
-
                 </CardContent>
-
               </Card>
             </Grid>
           ))}

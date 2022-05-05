@@ -51,10 +51,7 @@ export default function SignIn(props) {
     },
     validationSchema,
     onSubmit: (values) => { 
-    props.setIsUser(values)
    localStorage.setItem("currentUser",JSON.stringify(values));
-  let u=   localStorage.getItem("currentUser")
-   props.setIsUser(true)
       swal({
         title: "התחברת בהצלחה",
         icon: "success",
