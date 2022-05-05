@@ -51,18 +51,17 @@ export default function SignIn(props) {
     },
     validationSchema,
     onSubmit: (values) => { 
-  
-    localStorage.setItem("currentUser",JSON.stringify(values));
- //  let u=   localStorage.getItem("currentUser")
+    props.setIsUser(values)
+   localStorage.setItem("currentUser",JSON.stringify(values));
+  let u=   localStorage.getItem("currentUser")
    props.setIsUser(true)
-   
       swal({
         title: "התחברת בהצלחה",
         icon: "success",
         button: "Aww yiss!",
       });
+      navigate("../myFlights")
 ;
-
     },
   })
   return (
