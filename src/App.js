@@ -12,6 +12,7 @@ import BasicTable from './tablePlacement';
 import ResponsiveAppBar from './appBar';
 import Cards from './PassengerCard';
 import { useState } from 'react';
+import AlertDialog from './diaog';
 //import UploadButtons from ''
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
       <Route path="signUp" element={<SignUp />} />
       <Route path="signIn" element={<SignIn />} />
       <Route path="cards" element={<Cards/>} />
+      <Route path="place" element={<CircularIntegration/>} />
+      <Route path="dialog" element={<AlertDialog/>} />
     </Routes>
       </div>
     </>

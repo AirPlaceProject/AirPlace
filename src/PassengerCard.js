@@ -13,8 +13,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send'
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 export default function Cards() {
+  let navigate=useNavigate()
+  const checkConstrain=()=>{
+  navigate("../dialog")
+      //     <Button variant="outlined" onClick={handleClickOpen}>
+      //   Open alert dialog
+      // </Button>
+  }
   const [Passenger, setPassenger] = useState(
     [{ name: "נעמה פרנק", phone: "0556772275", want: "אני רוצה שקט לאורך כל הטיסה", constrain: ["ימין", "חלון", "רווח"] },
     { name: "ציפי ורנר", phone: "0556772278", want: "אני מעוניין לשבת רק ליד גבר", constrain: ["שמאל", "עסקים"] },
@@ -73,7 +81,7 @@ export default function Cards() {
                   {item.phone}
                 </CardContent>
                 <CardContent style={{ textAlign: "center" }}>
-                  <Button style={{ textAlign: "center", backgroundColor: '#069A8E' }} variant="contained" endIcon={<SendIcon />}>
+                  <Button onClick={checkConstrain} style={{ textAlign: "center", backgroundColor: '#069A8E' }} variant="contained" endIcon={<SendIcon />}>
                     Send mail
                   </Button>
                 </CardContent>

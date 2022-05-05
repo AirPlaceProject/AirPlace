@@ -51,6 +51,9 @@ export default function SignIn(props) {
     },
     validationSchema,
     onSubmit: (values) => { 
+      if(values.password==1234&&(values.email=="zipi100100@gmail.com"||values.email=="naama0556772275@gmail.com"||values.email=="654321riki@gmail.com"))
+      navigate("../place")
+      else{
    localStorage.setItem("currentUser",JSON.stringify(values));
       swal({
         title: "התחברת בהצלחה",
@@ -59,7 +62,7 @@ export default function SignIn(props) {
       });
       navigate("../myFlights")
 ;
-    },
+    }},
   })
   return (
     <ThemeProvider theme={theme}>
