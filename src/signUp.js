@@ -62,12 +62,13 @@ export default function SignUp() {
         validationSchema,
         onSubmit: (values) => {
 
-
+            localStorage.setItem("currentUser",JSON.stringify(values));
             swal({
                 title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
                 icon: "success",
                 button: "Aww yiss!",
             });
+            navigate("../myFlights")
         },
     })
     return (
@@ -166,10 +167,7 @@ export default function SignUp() {
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}
                                     label="I want to receive inspiration, marketing promotions and updates via email."
                                 /> */}
-                                <Input accept="image/*" id="icon-button-file" type="file" />
-                                <IconButton color="primary" aria-label="upload picture" component="span">
-                                    <PhotoCamera />
-                                </IconButton>
+                               
                             </Grid>
 
                         </Grid>

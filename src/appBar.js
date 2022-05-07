@@ -12,13 +12,13 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import AccountCircle from '@mui/icons-material/AccountCircle';
 const pages = ['my flights', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [ 'Logout'];
 
 const ResponsiveAppBar = (props) => {
-    const[user,setUser]=React.useState()
-    let navigate=useNavigate();
+  let navigate=useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -36,7 +36,11 @@ const ResponsiveAppBar = (props) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
+  const logOut=()=>{
+    localStorage.removeItem("currentUser");
+    handleCloseUserMenu()
+    navigate("../signIn")
+}
   return (
     <AppBar position="static" style={{marginBottom:"3%"}}>
       <Container maxWidth="xl">
@@ -50,6 +54,8 @@ const ResponsiveAppBar = (props) => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+           {
+         
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -60,6 +66,7 @@ const ResponsiveAppBar = (props) => {
             >
               <MenuIcon />
             </IconButton>
+}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -78,11 +85,9 @@ const ResponsiveAppBar = (props) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              
                 <MenuItem  onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">my Flights</Typography>
                 </MenuItem>
-              
             </Menu>
           </Box>
           <Typography
@@ -94,7 +99,7 @@ const ResponsiveAppBar = (props) => {
             LOGO
           </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-         {  props.isUser&& 
+         {  localStorage.getItem("currentUser")!=null&& 
          <>
          <Button
                // key={page}
@@ -121,11 +126,24 @@ const ResponsiveAppBar = (props) => {
           </Box> 
 
           <Box sx={{ flexGrow: 0 }}>
+            {  localStorage.getItem("currentUser")!=null&&
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              {/* <IconButton o sx={{ p: 0 }}  size="large"> */}
+              <IconButton
+              onClick={handleOpenUserMenu}
+               size="large"
+               aria-label="account of current user"
+               aria-controls="menu-appbar"
+               aria-haspopup="true"
+           //    onClick={handleMenu}
+               color="inherit"
+              >
+                <AccountCircle />
               </IconButton>
-            </Tooltip>
+                {/* <AccountCircle /> */}
+              {/* </IconButton> */}
+           
+            </Tooltip>}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -142,15 +160,25 @@ const ResponsiveAppBar = (props) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              <MenuItem
+              style={{backgroundColor:"red"}}
+               onClick={
+               logOut
+              
+              }
+              >
+                  <Typography textAlign="center" >logOut</Typography>
+                </MenuItem>
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
             </Menu>
           </Box>
         </Toolbar>
       </Container>
+        
     </AppBar>
   );
 };
