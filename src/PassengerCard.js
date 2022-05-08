@@ -14,7 +14,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send'
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 export default function Cards() {
   let navigate = useNavigate()
   const checkConstrain = () => {
@@ -22,13 +22,19 @@ export default function Cards() {
   }
   const [Passenger, setPassenger] = useState()
   useEffect(() => {
-    fetch(`https://localhost:44323/api/cards/${1}`)
-      .then(res => res.json())
-      .then(res => {
+    // fetch(`https://localhost:44323/api/cards/${1}`)
+    //   .then(res => res.json())
+    //   .then(res => {
 
-        console.log(res)
-        setPassenger(res)
+    //     console.log(res)
+    //     setPassenger(res)
+    //   })
+
+    axios.get(`https://localhost:44323/api/cards/${1}`)
+      .then(res => {
+        setPassenger(res.data)
       })
+
   }, [Passenger]);
   const StyledRating = styled(Rating)({
     '& .MuiRating-iconFilled': {
