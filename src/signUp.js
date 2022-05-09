@@ -22,6 +22,7 @@ import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import axios from 'axios';
 const Input = styled('input')({
     display: 'none',
 });
@@ -51,6 +52,13 @@ const validationSchema = Yup.object({
 const theme = createTheme();
 
 export default function SignUp() {
+    const [passDet,setPassDet]=React.useState(
+        {
+            idPass:"",
+            emailPass:"",
+            namePass:""
+        }
+    )
     let navigate = useNavigate()
     const { handleSubmit, handleChange, handleBlur, values, errors, touched, dirty, isValid } = useFormik({
         initialValues: {
@@ -61,7 +69,18 @@ export default function SignUp() {
         },
         validationSchema,
         onSubmit: (values) => {
-
+            setPassDet({
+                emailPass:values.email,
+                idPass:values.password,
+                namePass:values.firstName+" "+values.lastName
+            })
+            console.log(passDet)
+            axios.post(`https://localhost:44323/api/Passenger`,passDet)
+            .then(res => {
+             // const persons = res.data;
+              console.log(res.data)
+            //  setRow(res.data)
+            })
             localStorage.setItem("currentUser",JSON.stringify(values));
             swal({
                 title: values.firstName + " אנו שמחים שהתחברת בהצלחה",

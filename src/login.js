@@ -112,7 +112,6 @@ export default function SignIn(props) {
               label="Password"
               type="password"
               id="password"
-            // autoComplete="current-password"
             />
             {errors.password && touched.password && <Alert variant="outlined" style={{ borderColor: "white" }} severity="error">{errors.password}</Alert>}
             <FormControlLabel

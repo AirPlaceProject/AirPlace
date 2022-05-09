@@ -21,6 +21,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import axios from 'axios';
 
 const Input = styled('input')({
     display: 'none',
@@ -80,9 +81,16 @@ export default function FormConstrain() {
             setErr(false)
     }, [L, LS, W, RS, A]);
     const continueToCard = () => {
-        console.log(cardDet)
-        navigate("../cards")
-    }
+        //axios.put
+        axios.post(`https://localhost:44323/api/cards`,cardDet)
+    .then(res => {
+     // const persons = res.data;
+      console.log(res.data)
+    //  setRow(res.data)
+    })
+
+     navigate("../cards")
+     }
     const continueButton = () => {
         swal({
             title:  "השיבוץ אושר בהצלחה",
