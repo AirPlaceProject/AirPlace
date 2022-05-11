@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const StyledPaper = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -18,25 +19,35 @@ const StyledPaper = styled(Paper)(({ theme }) => ({
 
 export default function AutoGridNoWrap() {
     let navigate = useNavigate()
-    const [myFlights, setMyFlights] = useState([
-        {
-            codeFlight: 1,
-            pathFlight: "טיסה פריז-ישראל"
-        },
-        {
-            codeFlight: 2,
-            pathFlight: "טיסה פריז -הודו"
-        },
-        {
-            codeFlight: 3,
-            pathFlight: "טיסה פריז -הודו"
-        },
-        {
-            codeFlight: 4,
-            pathFlight: "טיסה פריז -הודו"
-        },
-    ])
+    // const [myFlights, setMyFlights] = useState([
+    //     {
+    //         codeFlight: 1,
+    //         pathFlight: "טיסה פריז-ישראל"
+    //     },
+    //     {
+    //         codeFlight: 2,
+    //         pathFlight: "טיסה פריז -הודו"
+    //     },
+    //     {
+    //         codeFlight: 3,
+    //         pathFlight: "טיסה פריז -הודו"
+    //     },
+    //     {
+    //         codeFlight: 4,
+    //         pathFlight: "טיסה פריז -הודו"
+    //     },
+    // ])
+    const [myFlights, setMyFlights] = useState( )
+    useEffect(() => {
+        axios.get("https://localhost:44323/api/Flight")
+          .then(res => {
+            setMyFlights(res.data)
+          })
+    
+      }, [myFlights]);
     return (
+        <>
+        {myFlights &&
         <Box sx={{ flexGrow: 1, overflow: 'hidden', px: 3 }}>
              {myFlights.map((item) => (
             <StyledPaper
@@ -58,6 +69,7 @@ export default function AutoGridNoWrap() {
                        </>
                 </Grid> 
             </StyledPaper>))}
-        </Box>
+        </Box>}
+        </>
     );
 }
