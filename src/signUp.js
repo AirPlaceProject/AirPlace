@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -23,6 +23,7 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
+//import { setDefaults } from 'sweetalert/typings/modules/options';
 const Input = styled('input')({
     display: 'none',
 });
@@ -52,13 +53,15 @@ const validationSchema = Yup.object({
 const theme = createTheme();
 
 export default function SignUp() {
-    const [passDet,setPassDet]=React.useState(
+    const [passDet, setPassDet] = React.useState(
         {
-            idPass:"",
-            emailPass:"",
-            namePass:""
+            idPass: "",
+            emailPass: "",
+            namePass: ""
         }
     )
+
+
     let navigate = useNavigate()
     const { handleSubmit, handleChange, handleBlur, values, errors, touched, dirty, isValid } = useFormik({
         initialValues: {
@@ -70,26 +73,43 @@ export default function SignUp() {
         validationSchema,
         onSubmit: (values) => {
             setPassDet({
-                emailPass:values.email,
-                idPass:values.password,
-                namePass:values.firstName+" "+values.lastName
+                emailPass: values.email,
+                idPass: values.password,
+                namePass: values.firstName + " " + values.lastName
             })
+            console.log(values)
             console.log(passDet)
-            axios.post(`https://localhost:44323/api/Passenger`,passDet)
-            .then(res => {
-             // const persons = res.data;
-              console.log(res.data)
-            //  setRow(res.data)
-            })
-            localStorage.setItem("currentUser",JSON.stringify(values));
-            swal({
-                title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
-                icon: "success",
-                button: "Aww yiss!",
-            });
-            navigate("../myFlights")
+            axios.post(`https://localhost:44323/api/Passenger`, passDet)
+                .then(res => {
+                    console.log(res.data)
+                    localStorage.setItem("currentUser", JSON.stringify(res.data));
+                    swal({
+                        title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
+                        icon: "success",
+                        button: "Aww yiss!",
+                    });
+                    navigate("../myFlights")
+                }).catch(
+                    swal({
+                        title: values.firstName + " קוד הכרטיס כבר  קיים במערכת",
+                        icon: "error",
+                        button: "Aww yiss!",
+                    }),
+                    navigate("../signIn")
+                )
+
+
+
         },
     })
+    useEffect(() => {
+        setPassDet({
+            emailPass: values.email,
+            idPass: values.password,
+            namePass: values.firstName + " " + values.lastName
+        })
+
+    }, [values]);
     return (
         <ThemeProvider theme={theme}>
             <Container component="main" maxWidth="xs">
@@ -186,7 +206,7 @@ export default function SignUp() {
                                     control={<Checkbox value="allowExtraEmails" color="primary" />}
                                     label="I want to receive inspiration, marketing promotions and updates via email."
                                 /> */}
-                               
+
                             </Grid>
 
                         </Grid>

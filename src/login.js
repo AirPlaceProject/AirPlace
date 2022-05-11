@@ -18,7 +18,7 @@ import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from "formik";
 import * as Yup from "yup"
-
+import axios from 'axios';
 
 
 const validationSchema = Yup.object({
@@ -50,20 +50,34 @@ export default function SignIn(props) {
       password: '',
     },
     validationSchema,
-    onSubmit: (values) => { 
-      if(values.password==1234&&(values.email=="zipi100100@gmail.com"||values.email=="naama0556772275@gmail.com"||values.email=="654321riki@gmail.com"))
-      navigate("../place")
-      else{
-   localStorage.setItem("currentUser",JSON.stringify(values));
-      swal({
-        title: "התחברת בהצלחה",
-        icon: "success",
-        button: "Aww yiss!",
-      });
-      navigate("../myFlights")
-;
-    }},
-  })
+    onSubmit: (values) => {
+      // if (values.password == 1234 && (values.email == "zipi100100@gmail.com" || values.email == "naama0556772275@gmail.com" || values.email == "654321riki@gmail.com"))
+      //   navigate("../place")
+      // else {
+      console.log("kkkkkkkkk")
+      console.log("kkkkkkkkk")
+      console.log("kkkkkkkkk")
+      console.log("kkkkkkkkk")
+      axios.get(`https://localhost:44323/api/Passenger`).then(res => {
+         // if (res) {
+console.log("jjjjjj")
+            // localStorage.setItem("currentUser", JSON.stringify(res.data));
+            // swal({
+            //   title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
+            //   icon: "success",
+            //   button: "Aww yiss!",
+            // });
+            // navigate("../myFlights")
+       //   }
+
+        }).catch(error1=>
+          console.log("jjjjjjuuuuuuuuuuuu"+error1)
+        )
+        ;
+    }
+  },
+    //}
+  )
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -96,9 +110,9 @@ export default function SignIn(props) {
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
-         
+
             />
-             {errors.email && touched.email && <Alert variant="outlined" style={{ borderColor: "white" }} severity="error">{errors.email}</Alert>}
+            {errors.email && touched.email && <Alert variant="outlined" style={{ borderColor: "white" }} severity="error">{errors.email}</Alert>}
             <TextField
 
               error={errors.password && touched.password}
@@ -123,21 +137,21 @@ export default function SignIn(props) {
               fullWidth
               variant="contained"
               disabled={!dirty || !isValid}
-         
+
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item>
-                <Link onClick={()=>navigate("../signUp")} style={{cursor:"pointer"}} >
+                <Link onClick={() => navigate("../signUp")} style={{ cursor: "pointer" }} >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-       
+
       </Container>
     </ThemeProvider>
   );

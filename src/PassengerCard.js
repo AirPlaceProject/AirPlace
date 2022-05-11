@@ -32,6 +32,7 @@ export default function Cards() {
 
     axios.get(`https://localhost:44323/api/cards/${1}`)
       .then(res => {
+      //  console.log("mmm")
         setPassenger(res.data)
       })
 
