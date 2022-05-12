@@ -14,6 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import {ReactComponent as Jotaro1} from './logo.svg'
+import {ReactComponent as Jotaro} from "./lo.svg"
 const pages = ['my flights', 'Pricing', 'Blog'];
 const settings = [ 'Logout'];
 
@@ -51,7 +53,9 @@ const ResponsiveAppBar = (props) => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            LOGO
+            {/* <img src="./logo.svg" alt="SVG as an image"></img>
+           <img src={require('./logo.svg')} style={{height:'55px'}}/> */}
+           <Jotaro style={{height:'80px'}} />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
            {
@@ -96,7 +100,7 @@ const ResponsiveAppBar = (props) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            LOGO
+            <img src="../public/lo.svg"/>
           </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
          {  localStorage.getItem("currentUser")!=null&& 

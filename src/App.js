@@ -13,7 +13,12 @@ import ResponsiveAppBar from './appBar';
 import Cards from './PassengerCard';
 import { useState } from 'react';
 import AlertDialog from './diaog';
+import PassengerFlights from './passengerFlights';
 //import UploadButtons from ''
+import Manager from './managerFlights'
+import SimpleBackdrop from './placmentManager';
+import PlacmentManager from './placmentManager';
+import BottomAppBar from './aa';
 function App() {
   return (
     <>
@@ -28,7 +33,12 @@ function App() {
       <Route path="cards" element={<Cards/>} />
       <Route path="place" element={<CircularIntegration/>} />
       <Route path="dialog" element={<AlertDialog/>} />
+      <Route path="manager" element={<Manager/>} />
+      <Route path="placmentManager" element={<PlacmentManager/>} />
+
     </Routes>
+
+
       </div>
     </>
   );

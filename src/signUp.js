@@ -79,24 +79,24 @@ export default function SignUp() {
             })
             console.log(values)
             console.log(passDet)
-            axios.post(`https://localhost:44323/api/Passenger`, passDet)
-                .then(res => {
-                    console.log(res.data)
-                    localStorage.setItem("currentUser", JSON.stringify(res.data));
-                    swal({
-                        title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
-                        icon: "success",
-                        button: "Aww yiss!",
-                    });
-                    navigate("../myFlights")
-                }).catch(
-                    swal({
-                        title: values.firstName + " קוד הכרטיס כבר  קיים במערכת",
-                        icon: "error",
-                        button: "Aww yiss!",
-                    }),
-                    navigate("../signIn")
-                )
+        //     axios.post(`https://localhost:44323/api/Passenger`, passDet)
+        //         .then(res => {
+        //             console.log(res.data)
+        //             localStorage.setItem("currentUser", JSON.stringify(res.data));
+        //             swal({
+        //                 title: values.firstName + " אנו שמחים שהתחברת בהצלחה",
+        //                 icon: "success",
+        //                 button: "Aww yiss!",
+        //             });
+        //             navigate("../myFlights")
+        //         }).catch(
+        //             swal({
+        //                 title: values.firstName + " קוד הכרטיס כבר  קיים במערכת",
+        //                 icon: "error",
+        //                 button: "Aww yiss!",
+        //             }),
+        //             navigate("../signIn")
+        //         )
 
 
 

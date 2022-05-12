@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<g id="BACKGROUND">
+	<path fill="#FFFFFF" d="M499,500H1c-0.6,0-1-0.4-1-1V1c0-0.6,0.4-1,1-1h498c0.6,0,1,0.4,1,1v498C500,499.6,499.6,500,499,500z"/>
+</g>
+<g id="OBJECTS">
+	<g>
+		<text transform="matrix(1 0 0 1 160.8943 312.2159)"><tspan x="0" y="0" fill="#08183B" font-family="'Montserrat-ExtraBold'" font-size="39.6292px" letter-spacing="2">AIR</tspan><tspan x="62.2" y="0" fill="#00C0EE" font-family="'Montserrat-ExtraBold'" font-size="39.6292px" letter-spacing="2">PLACE</tspan></text>
+		
+			<text transform="matrix(1 0 0 1 112.7178 337.0054)" fill="#08183B" font-family="'Montserrat-Medium'" font-size="12.8417px" letter-spacing="3">my chosen one place in the plane</text>
+	</g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="151.4234" y1="195.9162" x2="348.5766" y2="195.9162">
+		<stop  offset="0" style="stop-color:#00D6EE"/>
+		<stop  offset="1" style="stop-color:#009AE1"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M309.2,171.3c-3.6,0-7.1,0.5-10.4,1.4c-8.7-18.2-27.3-30.8-48.8-30.8c-21.5,0-40.1,12.6-48.8,30.8
+		c-3.3-0.9-6.8-1.4-10.4-1.4c-21.7,0-39.4,17.6-39.4,39.4c0,0.6,0,1.2,0,1.8c1.6,33.1,43.6,33,90.2-13c2.1-2.3,4.3-4.7,6.5-7.1
+		c0,0,0,0,0,0h0h0l-7.8-6.1l-19.9-13.5c-0.3-0.2-0.4-0.7-0.1-0.9l2.2-2.2c0.5-0.5,1.1-0.6,1.8-0.5c0,0,27.8,7.5,35.9,10.8
+		c10.3-9.6,22.8-17.6,24.4-16c1.7,1.7-6.5,14-16.1,24.2c3.3,7.8,11,36.2,11,36.2c0.2,0.7,0,1.4-0.5,1.8l-2.2,2.2
+		c-0.3,0.3-0.7,0.2-0.9-0.1l-13.5-19.9l-6.2-8c-0.1,0.1-0.2,0.1-0.2,0.2l0,0c-32.5,32.5-4.1,49.4,21.2,49.4h31.9
+		c21.7,0,39.4-17.6,39.4-39.4S330.9,171.3,309.2,171.3z"/>
+	<g>
+		<defs>
+			<path id="SVGID_2_" d="M309.2,171.3c-3.6,0-7.1,0.5-10.4,1.4c-8.7-18.2-27.3-30.8-48.8-30.8c-21.5,0-40.1,12.6-48.8,30.8
+				c-3.3-0.9-6.8-1.4-10.4-1.4c-21.7,0-39.4,17.6-39.4,39.4c0,0.6,0,1.2,0,1.8c1.6,33.1,43.6,33,90.2-13c2.1-2.3,4.3-4.7,6.5-7.1
+				c0,0,0,0,0,0h0h0l-7.8-6.1l-19.9-13.5c-0.3-0.2-0.4-0.7-0.1-0.9l2.2-2.2c0.5-0.5,1.1-0.6,1.8-0.5c0,0,27.8,7.5,35.9,10.8
+				c10.3-9.6,22.8-17.6,24.4-16c1.7,1.7-6.5,14-16.1,24.2c3.3,7.8,11,36.2,11,36.2c0.2,0.7,0,1.4-0.5,1.8l-2.2,2.2
+				c-0.3,0.3-0.7,0.2-0.9-0.1l-13.5-19.9l-6.2-8c-0.1,0.1-0.2,0.1-0.2,0.2l0,0c-32.5,32.5-4.1,49.4,21.2,49.4h31.9
+				c21.7,0,39.4-17.6,39.4-39.4S330.9,171.3,309.2,171.3z"/>
+		</defs>
+		<clipPath id="SVGID_3_">
+			<use xlink:href="#SVGID_2_"  overflow="visible"/>
+		</clipPath>
+		
+			<ellipse transform="matrix(0.1636 -0.9865 0.9865 0.1636 6.9124 483.0221)" clip-path="url(#SVGID_3_)" fill="#00D6EE" cx="288.3" cy="237.4" rx="51.8" ry="51.8"/>
+		<circle clip-path="url(#SVGID_3_)" fill="#00D6EE" cx="192.9" cy="231.4" r="47.9"/>
+	</g>
+</g>
+</svg>

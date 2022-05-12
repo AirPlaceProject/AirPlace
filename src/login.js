@@ -51,9 +51,9 @@ export default function SignIn(props) {
     },
     validationSchema,
     onSubmit: (values) => {
-      // if (values.password == 1234 && (values.email == "zipi100100@gmail.com" || values.email == "naama0556772275@gmail.com" || values.email == "654321riki@gmail.com"))
-      //   navigate("../place")
-      // else {
+      if (values.password == 1234 && (values.email == "zipi100100@gmail.com" || values.email == "naama0556772275@gmail.com" || values.email == "654321riki@gmail.com"))
+        navigate("../manager")
+      else {
       console.log("kkkkkkkkk")
       console.log("kkkkkkkkk")
       console.log("kkkkkkkkk")
@@ -76,7 +76,7 @@ console.log("jjjjjj")
         ;
     }
   },
-    //}
+   }
   )
   return (
     <ThemeProvider theme={theme}>
